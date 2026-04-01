@@ -1,0 +1,207 @@
+Prompt 1 — Planning, Architecture & Tech Stack
+
+I need to build an educational Quiz App about AI Development. Here are the full requirements:
+https://fullstacklabs.notion.site/Agentic-React-QuizApp-295cde61e5fc80768592d2aac35989b3
+
+And here's the JSON data template for quizzes:
+https://fsl-assessment-public-files.s3.us-east-1.amazonaws.com/agentic/quiz_app_agent_fundamentals.json
+
+Before writing any code, I want you to:
+
+Define the full project architecture (folders, layers, responsibilities)
+Define the TypeScript data model (types/interfaces) for Quiz, Question, QuizAttempt, UserProfile
+Explain the persistence strategy using localStorage
+List all necessary pages/routes and the user navigation flow
+Propose how to organize the Mock API
+Suggest a testing strategy (unit, integration, e2e)
+
+Use the following tech stack:
+
+Vite as build tool
+React 19 with TypeScript
+Tailwind CSS v4 (with @tailwindcss/vite plugin) for styling
+React Router DOM v7 for routing
+React Context API for global state management
+localStorage for data persistence
+Vitest + React Testing Library for tests
+Inter (Google Fonts) as the primary typeface
+
+Don't generate code yet — I want to review the plan before we start implementing.
+
+Prompt 2 — Project Scaffold
+
+Great plan. Let's start implementing. Begin with the project scaffold:
+
+Create the project with Vite + React + TypeScript
+Set up Tailwind CSS v4 with the @tailwindcss/vite plugin
+Install react-router-dom for routing
+Configure index.html with Inter font from Google Fonts and a proper title
+Clean up all boilerplate files (App.css, unnecessary assets, default content)
+Set up index.css with Tailwind and a custom theme with colors for: primary, success, danger, warning
+Add a subtle gradient background on the body
+
+Give me the terminal commands and the complete files.
+
+Prompt 3 — Data Layer (Types + Mock API + Storage)
+
+Now implement the data layer:
+
+src/types/index.ts — All TypeScript interfaces (Quiz, Question, QuizAttempt, UserProfile, AppState)
+src/api/quizData.ts — Mock API with:
+The Agent Fundamentals quiz data from the JSON I shared
+2 more categories you create (Prompt Engineering and Model Selection), each with 5 questions following the same format
+Async functions fetchQuizzes() and fetchQuizById(id) that simulate network delay
+src/utils/storage.ts — localStorage helper with functions for:
+getUser
+setUser
+getAttempts
+getAttemptsByQuiz
+saveAttempt
+clearAllData
+
+Ensure full type-safety throughout.
+
+Prompt 4 — Context & Global State Management
+
+Create the global state management with React Context:
+
+src/context/AppContext.tsx should:
+
+Manage user (UserProfile | null) and attempts (QuizAttempt[])
+Automatically sync with localStorage
+Expose functions: login, logout, addAttempt, getQuizAttempts, getBestScore
+Have a custom useApp() hook with error handling if used outside the Provider
+
+Integrate the Provider in main.tsx alongside BrowserRouter.
+
+Prompt 5 — Layout & Navigation
+
+Create the Layout component with navigation:
+
+src/components/Layout.tsx:
+
+Sticky navbar with backdrop blur, "AI Dev Quiz" logo, navigation links (Home, Quizzes, Dashboard)
+Visual highlight on the active link using useLocation
+User area: show avatar with initial + name if logged in, "Get Started" button if not
+Simple footer
+Clean, modern, responsive design
+
+Update App.tsx with all routes and the Layout wrapping the Routes.
+
+Prompt 6 — Landing Page (Home)
+
+Implement the Home page (src/pages/Home.tsx):
+
+Hero section with a badge, large title "Master AI Development, One Quiz at a Time", descriptive subtitle, CTAs (Start a Quiz + Create Profile)
+User stats section (quizzes taken, categories explored, average score) — only visible when data exists
+Features section with 3 cards (Learn by Doing, Track Progress, Stay Current)
+Responsive and impactful design with shadows, hover effects, and smooth transitions
+Prompt 7 — Quiz Selection
+
+Implement the quiz selection page (src/pages/QuizSelect.tsx):
+
+Title and description at the top
+Grid of cards (1 col on mobile, 2 cols on tablet, 3 cols on desktop)
+Each card shows: quiz emoji, title, description, question count
+If the user has attempted the quiz, show best score with a colored badge (green ≥80%, yellow ≥50%, red <50%) and number of attempts
+If not attempted, show "Not attempted"
+Clickable cards that navigate to /quiz/:id
+Loading spinner while data loads
+Hover effect with elevation and colored border
+Prompt 8 — Quiz Experience (Core Feature)
+
+Implement the quiz experience (src/pages/Quiz.tsx). This is the most important feature:
+
+Load quiz by ID from URL params
+Randomize question order for replayability
+Per-question state: selected (chosen option) and submitted (whether confirmed)
+Visual progress bar with "Question X of Y"
+Options with letter badges (A, B, C, D) in circular badges
+After submit: highlight green for correct, red for incorrect, show explanation
+"Submit Answer" button (disabled if nothing selected) → changes to "Next Question" or "View Results"
+"Learn Mode" toggle that shows the explanation BEFORE answering (as a hint)
+Back link to quiz list
+On finish: save the attempt via context and navigate to /results/:id passing state
+Handle quiz not found gracefully
+Prompt 9 — Results Page
+
+Implement the results page (src/pages/Results.tsx):
+
+Receive data via location.state (answers, questionOrder, score, percentage)
+Centered score card with: performance emoji, title, motivational message based on score
+100% = Perfect
+≥80% = Great job
+≥60% = Good effort
+≥40% = Needs review
+<40% = Don't give up
+Large display of percentage and score (X/Y)
+Colored progress bar (green/yellow/red)
+Buttons: Retake Quiz, Review Answers (toggle), All Quizzes
+Expandable review section showing each question with:
+number
+correct/incorrect indicator
+user's answer
+correct answer (if wrong)
+explanation
+Fallback if no state exists (link to go to quizzes)
+Prompt 10 — Dashboard & Profile
+
+Implement the 2 remaining pages:
+
+1. src/pages/Dashboard.tsx
+If not logged in, show CTA to create profile
+Header with avatar, name, and registration date
+Stats grid: total attempts, average score, perfect scores, quizzes available
+"Quiz Progress" section with a card per quiz showing attempts and a best score bar
+"Recent Activity" table with the last 10 attempts (quiz, date, score, result with badge)
+If no attempts, show CTA to take the first quiz
+2. src/pages/Profile.tsx
+If not logged in:
+Creation form with username input
+Validation (2–20 chars)
+Submit button that redirects to /quizzes
+If logged in:
+Large avatar
+Name
+Registration date
+Stats (quizzes taken, average score)
+Reset button with confirmation dialog
+Prompt 11 — Testing
+
+Now add tests to the project:
+
+Set up the testing environment with Vitest + React Testing Library + jsdom
+Create unit tests for:
+src/utils/storage.ts — all functions (mock localStorage)
+src/api/quizData.ts — fetchQuizzes returns correct data, fetchQuizById finds/doesn't find
+Create component tests for:
+Profile.tsx — renders form when not logged in, renders profile when logged in
+QuizSelect.tsx — renders quiz cards, shows loading state
+Quiz.tsx — full flow: select option, submit, see feedback, next question
+Results.tsx — renders score and performance message correctly
+Add "test" and "test:coverage" scripts to package.json
+
+Use mocks for the context and API. Ensure all tests pass without errors.
+
+Prompt 12 — Final Polish
+
+Final review:
+
+Check responsiveness on all pages (mobile 375px, tablet 768px, desktop 1024px+)
+Ensure all loading, error, and empty states are properly handled
+Run TypeScript check (tsc --noEmit) and fix any errors
+Run the production build and verify it compiles without warnings
+Create a README.md with:
+project description
+how to run
+technologies
+folder structure
+how to run tests
+Give me a final summary of all implemented features vs the acceptance criteria
+Usage Tips
+Always paste the full context in the first prompt (Notion requirements + JSON)
+Don't skip prompts — the order matters because each one builds on the previous
+Review before moving on — if something looks off, ask for adjustments before the next prompt
+Prompts 1–10 are the core — prompts 11 and 12 are complementary but demonstrate engineering maturity
+If the conversation gets too long, you can start a new one and reference what's already built with:
+"I already have files X, Y, Z implemented"
