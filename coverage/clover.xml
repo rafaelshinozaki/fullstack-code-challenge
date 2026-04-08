@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1775637353732" clover="3.2.0">
+  <project timestamp="1775637353732" name="All files">
+    <metrics statements="78" coveredstatements="74" conditionals="67" coveredconditionals="52" methods="28" coveredmethods="28" elements="173" coveredelements="154" complexity="0" loc="78" ncloc="78" packages="3" files="4" classes="4"/>
+    <package name="api">
+      <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+      <file name="quizData.ts" path="C:\Users\Rafael\Workspace\tech-challenge\src\api\quizData.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="212" count="1" type="stmt"/>
+        <line num="215" count="5" type="stmt"/>
+        <line num="216" count="5" type="stmt"/>
+        <line num="221" count="3" type="stmt"/>
+        <line num="222" count="3" type="stmt"/>
+        <line num="226" count="2" type="stmt"/>
+        <line num="227" count="4" type="stmt"/>
+        <line num="228" count="2" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+    <package name="pages">
+      <metrics statements="17" coveredstatements="17" conditionals="14" coveredconditionals="12" methods="9" coveredmethods="9"/>
+      <file name="HomePage.tsx" path="C:\Users\Rafael\Workspace\tech-challenge\src\pages\HomePage.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="8" coveredconditionals="7" methods="3" coveredmethods="3"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+      </file>
+      <file name="QuizzesPage.tsx" path="C:\Users\Rafael\Workspace\tech-challenge\src\pages\QuizzesPage.tsx">
+        <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="5" methods="6" coveredmethods="6"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="34" count="8" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="52" coveredstatements="48" conditionals="51" coveredconditionals="38" methods="14" coveredmethods="14"/>
+      <file name="storage.ts" path="C:\Users\Rafael\Workspace\tech-challenge\src\utils\storage.ts">
+        <metrics statements="52" coveredstatements="48" conditionals="51" coveredconditionals="38" methods="14" coveredmethods="14"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="9" count="18" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="18" type="stmt"/>
+        <line num="16" count="17" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="31" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="32" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="45" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="47" count="5" type="stmt"/>
+        <line num="48" count="10" type="cond" truecount="1" falsecount="1"/>
+        <line num="49" count="10" type="stmt"/>
+        <line num="58" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="60" count="2" type="stmt"/>
+        <line num="61" count="2" type="stmt"/>
+        <line num="62" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="69" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="71" count="4" type="stmt"/>
+        <line num="72" count="4" type="stmt"/>
+        <line num="73" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="74" count="3" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="81" count="3" type="stmt"/>
+        <line num="82" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="84" count="3" type="stmt"/>
+        <line num="85" count="3" type="stmt"/>
+        <line num="89" count="2" type="stmt"/>
+        <line num="90" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="91" count="2" type="stmt"/>
+        <line num="95" count="7" type="stmt"/>
+        <line num="96" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="98" count="7" type="stmt"/>
+        <line num="99" count="7" type="stmt"/>
+        <line num="103" count="2" type="stmt"/>
+        <line num="104" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="106" count="2" type="stmt"/>
+        <line num="107" count="2" type="stmt"/>
+        <line num="108" count="2" type="stmt"/>
+        <line num="109" count="2" type="stmt"/>
+        <line num="113" count="2" type="stmt"/>
+        <line num="114" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="115" count="2" type="stmt"/>
+        <line num="119" count="1" type="stmt"/>
+        <line num="120" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="121" count="1" type="stmt"/>
+        <line num="125" count="1" type="stmt"/>
+        <line num="126" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="128" count="1" type="stmt"/>
+        <line num="129" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
